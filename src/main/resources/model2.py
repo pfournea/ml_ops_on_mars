@@ -2,12 +2,20 @@
 import sys
 import time
 import json
+import math
 
 def model_predict(data):
     # run dedicated hardware
     print("Start calculations")
-    time.sleep(2)
-    print("Done")
+    started = time.time()
+
+    if 'data' not in data:
+        raise ValueError("data should have 'data' field")
+    data = data['data']
+    # perform the computations
+    time.sleep(abs(math.tan(data)))
+
+    print("Done in {:.2f}sec".format(time.time() - started))
     # we have the result now
     result = { 'ice_found': True }
     return result
